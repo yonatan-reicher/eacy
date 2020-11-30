@@ -25,7 +25,7 @@ T is a named type
                                                                       \
     /*  Create a copy of an array */                                  \
     bool copy_##T##_array(T##_array *dest, const T##_array *source) { \
-        size_t size = array_size(*source);                            \
+        size_t size = array_size(source);                             \
                                                                       \
         bool success = new_##T##_array(dest, size);                   \
         if (success == false) {                                       \
