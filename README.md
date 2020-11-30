@@ -2,7 +2,10 @@
 A small, header only, macro-heavy, quality of life library
 
 # Working Headers
-`T_array.h` - An array generic data structure
+* `T_array.h` - An array generic data structure
+* `string.h` - A wrapper for a `char*` type
+* `T_optional.h` - A generic container that has one value or less
+* `T_or_U.h` - A generic container that has one value of a type or another (a tagged union)
 
 # How to use
 ### Data Structures
@@ -33,5 +36,4 @@ use the `int_array` type and `new_int_array` function
 * If 2 `define_X(T)` make a conflict, try giving T a new name via `typedef`
 
 # WIP
-* `string.h` - A wrapper for a `char*` type
 * `shared_T_ptr.h` - A shared pointer type mimicking cpp's `std::shared_ptr<T>`
