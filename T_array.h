@@ -34,6 +34,12 @@ T is a named type
         memcpy(dest->start, source->start, size * sizeof(T));         \
     }                                                                 \
                                                                       \
+    bool move_##T##_array(T##_array *pDest, T##_array *pSource) {     \
+        pDest->start = pSource->start;                                \
+        pDest->size = pSource->size;                                  \
+        pSource->start = NULL;                                        \
+    }                                                                 \
+                                                                      \
     /*  Frees the memory owned by array ands nulls it */              \
     void delete_##T##_array(T##_array *parray) {                      \
         free(parray->start);                                          \
