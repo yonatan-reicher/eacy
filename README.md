@@ -34,4 +34,4 @@ use the `int_array` type and `new_int_array` function
 
 # WIP
 * `string.h` - A wrapper for a `char*` type
-* `shared_T_ptr.h` - A shared oointer type mimicking cpp's `std::shared_ptr<T>`
+* `shared_T_ptr.h` - A shared pointer type mimicking cpp's `std::shared_ptr<T>`
