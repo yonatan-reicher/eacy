@@ -45,3 +45,23 @@ byte bit_array_get(byte_array* pArray, size_t index) {
     ret = ret >> bitIndex;
     return byte_of_uint8((uint8_t)ret);
 }
+
+/*
+Set the bit of the byte_array as if it was a bit array
+
+Input:
+    pArray - The array object
+    index - The index in number of bytes after first
+*/
+void bit_array_set(byte_array* pArray, size_t index, bool value) {
+    size_t byteIndex = index / sizeof(byte);
+    size_t bitIndex = index % sizeof(byte);
+
+    byte* oldByte = array_index(pArray, byteIndex);
+    
+    byte bitfield = byte_of_uint8(value ? 1 : 0);
+    bitfield.fullByte = bitfield.fullByte << bitIndex;
+     
+    oldByte->fullByte |= bitfield.fullByte;
+    oldByte->fullByte &= bitfield.fullByte;
+}
