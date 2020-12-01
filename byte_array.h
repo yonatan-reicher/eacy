@@ -1,10 +1,11 @@
 #pragma once
 
+#include <inttypes.h>
 #include "T_array.h"
 
 typedef struct byte {
     union {
-        unsigned char fullByte;
+        uint8_t fullByte;
         struct {
             unsigned char bit1: 1;
             unsigned char bit2: 1;
@@ -18,6 +19,12 @@ typedef struct byte {
     };
 } byte;
 
+byte byte_of_uint8(uint8_t i) {
+    byte ret = { 0 };
+    ret.fullByte = i;
+    return ret;
+}
+
 define_array(byte);
 
 /*
@@ -27,13 +34,14 @@ Input:
     pArray - The array object
     index - The index in number of bytes after first
 Output:
-    A byte such that the first bit is the (index+1)th bit (other bits may not be zero)
+    A byte such that the first bit is the (index+1)th bit and the 
+    rest of the bits are the bits directly after (if there are none will be zero)
 */
 byte bit_array_get(byte_array* pArray, size_t index) {
     size_t byteIndex = index / sizeof(byte);
     size_t bitIndex = index % sizeof(byte);
 
-    byte ret = (*array_index(pArray, byteIndex));
-    ret.fullByte >> bitIndex;
-    return ret;
+    uint16_t ret = *(uint16_t*)array_index(pArray, byteIndex);
+    ret = ret >> bitIndex;
+    return byte_of_uint8((uint8_t)ret);
 }
