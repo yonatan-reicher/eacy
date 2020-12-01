@@ -3,6 +3,8 @@
 #include <inttypes.h>
 #include "T_array.h"
 
+#define BITS_IN_BYTE 8
+
 typedef struct byte {
     union {
         uint8_t fullByte;
@@ -41,8 +43,8 @@ Output:
     rest of the bits are the bits directly after
 */
 byte bit_array_get(byte_array* pArray, size_t index) {
-    size_t byteIndex = index / sizeof(byte);
-    size_t bitIndex = index % sizeof(byte);
+    size_t byteIndex = index / BITS_IN_BYTE;
+    size_t bitIndex = index % BITS_IN_BYTE;
 
     uint16_t ret = *(uint16_t*)array_index(pArray, byteIndex);
     ret = ret >> bitIndex;
@@ -57,8 +59,8 @@ Input:
     index - The index in number of bytes after first
 */
 void bit_array_set(byte_array* pArray, size_t index, bool value) {
-    size_t byteIndex = index / sizeof(byte);
-    size_t bitIndex = index % sizeof(byte);
+    size_t byteIndex = index / BITS_IN_BYTE;
+    size_t bitIndex = index % BITS_IN_BYTE;
 
     byte* oldByte = array_index(pArray, byteIndex);
     
