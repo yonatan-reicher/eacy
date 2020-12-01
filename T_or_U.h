@@ -34,6 +34,15 @@ Output: bool
 #define is_first(T_OR_U) ((T_OR_U).is1)
 
 /*
+Get the T value of a T_or_U
+
+Input:
+    T_or_U T_OR_U - The container
+Output: T
+*/
+#define get_first(T_OR_U) ((T_OR_U).value1)
+
+/*
 does the T_or_U have a U value?
 
 Input:
@@ -42,3 +51,12 @@ Output: bool
     true if"f the container has a U value
 */
 #define is_second(T_OR_U) (!(T_OR_U).is1)
+
+/*
+Get the U value of a T_or_U
+
+Input:
+    T_or_U T_OR_U - The container
+Output: U
+*/
+#define get_second(T_OR_U) ((T_OR_U).value2)
