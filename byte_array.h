@@ -19,6 +19,9 @@ typedef struct byte {
     };
 } byte;
 
+/*
+Turn an uint8_t value to a byte value
+*/
 byte byte_of_uint8(uint8_t i) {
     byte ret = { 0 };
     ret.fullByte = i;
