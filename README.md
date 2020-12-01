@@ -35,5 +35,9 @@ use the `int_array` type and `new_int_array` function
 * You can call a `define_X(T)` multiple times, as long as it gets different parameters T
 * If 2 `define_X(T)` make a conflict, try giving T a new name via `typedef`
 
+# Installation
+Simply put the headers in the same directly as you would your own headers and
+add them to your IDE if you need
+
 # WIP
 * `shared_T_ptr.h` - A shared pointer type mimicking cpp's `std::shared_ptr<T>`
