@@ -35,7 +35,7 @@ Input:
     index - The index in number of bytes after first
 Output:
     A byte such that the first bit is the (index+1)th bit and the 
-    rest of the bits are the bits directly after (if there are none will be zero)
+    rest of the bits are the bits directly after
 */
 byte bit_array_get(byte_array* pArray, size_t index) {
     size_t byteIndex = index / sizeof(byte);
