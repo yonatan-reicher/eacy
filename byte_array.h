@@ -67,6 +67,6 @@ void bit_array_set(byte_array* pArray, size_t index, bool value) {
     byte bitfield = byte_of_uint8(value ? 1 : 0);
     bitfield.fullByte = bitfield.fullByte << bitIndex;
      
+    oldByte->fullByte &= ~bitfield.fullByte;
     oldByte->fullByte |= bitfield.fullByte;
-    oldByte->fullByte &= bitfield.fullByte;
 }
