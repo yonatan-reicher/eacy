@@ -3,7 +3,7 @@ A small, header only, macro-heavy, quality of life library
 
 # Working Headers
 * `T_array.h` - An array generic data structure
-* `string.h` - A wrapper for a `char*` type
+* `string.h` - A data structure for working with strings easier than `char*` types
 * `T_optional.h` - A generic container that has one value or less
 * `T_or_U.h` - A generic container that has one value of a type or another (a tagged union)
 
