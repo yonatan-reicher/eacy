@@ -65,3 +65,15 @@ char* str_index(str slice, size_t i) {
     return &slice.start[i];
 }
 
+/*
+The size of a str
+
+Input:
+    stringSlice - A string slice
+Output:
+    The size of the slice
+*/
+size_t str_size(str stringSlice) {
+    return stringSlice.size;
+}
+
