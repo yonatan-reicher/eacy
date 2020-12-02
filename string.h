@@ -61,6 +61,11 @@ str str_of_string(string* pStr, size_t start, size_t length) {
     str ret = { string_index(pStr, start), length };
 }
 
+str substr(str original, size_t start, size_t length) {
+    str ret = { str_index(original, start), length };
+    return ret;    
+}
+
 char* str_index(str slice, size_t i) {
     return &slice.start[i];
 }
