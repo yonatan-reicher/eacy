@@ -59,6 +59,7 @@ str str_of_cString(char* cString, size_t start, size_t length) {
 
 str str_of_string(string* pStr, size_t start, size_t length) {
     str ret = { string_index(pStr, start), length };
+    return ret;
 }
 
 str substr(str original, size_t start, size_t length) {
