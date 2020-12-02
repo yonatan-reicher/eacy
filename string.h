@@ -41,3 +41,27 @@ char* string_index(string* str, size_t i) {
 char* const_string_index(const string* str, size_t i) {
     return array_index(&str->inner, i);
 }
+
+/*
+A slice of a string, a reference to a part of the string.
+When the original string is destroyed this str points to 
+destroyed memory and must not be used.
+*/
+typedef struct str {
+    char* start;
+    size_t size;
+} str;
+ 
+str str_of_cString(char* cString, size_t start, size_t length) {
+    str ret = { &cString[start], length };
+    return ret;
+}
+
+str str_of_string(string* pStr, size_t start, size_t length) {
+    str ret = { string_index(pStr, start), length };
+}
+
+char* str_index(str slice, size_t i) {
+    return &slice.start[i];
+}
+
