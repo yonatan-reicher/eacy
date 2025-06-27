@@ -23,6 +23,12 @@ T is a named type
         return parray->start != NULL;                                 \
     }                                                                 \
                                                                       \
+    /*  Frees the memory owned by array ands nulls it */              \
+    void delete_##T##_array(T##_array *parray) {                      \
+        free(parray->start);                                          \
+        parray->start = NULL;                                         \
+    }                                                                 \
+                                                                      \
     /*  Create a copy of an array */                                  \
     bool copy_##T##_array(T##_array *dest, const T##_array *source) { \
         size_t size = array_size(source);                             \
@@ -32,19 +38,16 @@ T is a named type
             return false;                                             \
         }                                                             \
         memcpy(dest->start, source->start, size * sizeof(T));         \
+        return true;                                                  \
     }                                                                 \
                                                                       \
     bool move_##T##_array(T##_array *pDest, T##_array *pSource) {     \
+        delete_##T##_array(pDest);                                    \
         pDest->start = pSource->start;                                \
         pDest->size = pSource->size;                                  \
         pSource->start = NULL;                                        \
+        return true;                                                  \
     }                                                                 \
-                                                                      \
-    /*  Frees the memory owned by array ands nulls it */              \
-    void delete_##T##_array(T##_array *parray) {                      \
-        free(parray->start);                                          \
-        parray->start = NULL;                                         \
-    }
 
 /*
 Get a pointer to the array
